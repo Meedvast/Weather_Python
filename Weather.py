@@ -12,7 +12,7 @@ def get_location(api_type, city_kw='北京'):
     return requests.get(url_v2).json()
 
 
-def get(api_type):
+def get(api_type, city_id):
     url = url_api + api_type + '?location=' + city_id + KEY
     return requests.get(url).json()
 
@@ -23,15 +23,15 @@ def lookup_city(city_kw):
     return city_id
 
 
-def hourly():
-    return get('24h')
+def hourly(city_id):
+    return get('24h', city_id)
 
 
-if __name__ == '__main__':
+def write_csv():
     print('请输入你想查询的城市:')
     city_kw = input()
     city_id = lookup_city(city_kw)
-    hourly_data = hourly()
+    hourly_data = hourly(city_id)
     with open('weather.csv', 'w', encoding='gbk', newline='') as csv_file:
         writer = csv.writer(csv_file)
         column = ['时间', '气温', '风向', '湿度', '降雨概率']
@@ -46,3 +46,4 @@ if __name__ == '__main__':
             dict['降雨概率'] = it['pop']
             writer.writerow(dict[col] for col in column)
             i += 1
+

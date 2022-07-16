@@ -30,7 +30,7 @@ def tem_curve_month(data):
     plt.legend()
     plt.text(tem_max_date + 0.15, tem_max + 0.15, str(tem_max), ha='center', va='bottom', fontsize=10.5)  # 标出最高温度
     plt.text(tem_min_date + 0.15, tem_min + 0.15, str(tem_min), ha='center', va='bottom', fontsize=10.5)  # 标出最低温度
-    plt.xticks(x)
+    plt.xticks(x)  # 设置x轴标签
     plt.title('查询月数30天高温低温变化曲线图')
     plt.xlabel('日期/天')
     plt.ylabel('摄氏度/℃')

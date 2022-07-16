@@ -2,7 +2,7 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-
+import Weather
 
 def tem_curve_day(data):
     """温度曲线绘制"""
@@ -27,7 +27,7 @@ def tem_curve_day(data):
     plt.text(tem_min_date + 0.15, tem_min + 0.15, str(tem_min), ha='center', va='bottom', fontsize=10.5)  # 标出最低温度
     plt.xticks(x)
     plt.legend()
-    plt.title('一天温度变化曲线图')
+    plt.title('未来24小时气温预测曲线图')
     plt.xlabel('时间/h')
     plt.ylabel('摄氏度/℃')
     plt.show()
@@ -53,6 +53,7 @@ def main():
     """主函数"""
     plt.rcParams['font.sans-serif'] = ['SimHei']  # 解决中文显示问题
     plt.rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
+    Weather.write_csv()  # 将天气数据写入csv文件
     data = pd.read_csv('weather.csv', encoding='gbk')
     tem_curve_day(data)
     rain_curve(data)
