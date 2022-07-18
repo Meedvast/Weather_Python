@@ -11,7 +11,7 @@ def write_csv():
     city = re.sub(r'[-]', "", ret)
     dict = {}  # 空字典
 
-    time = gui.text_time.get()[0:5]
+    time = '202206'
     domain = "https://lishi.tianqi.com/" + city + "/" + time + ".html"
     header = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"

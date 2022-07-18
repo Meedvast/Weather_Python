@@ -9,33 +9,32 @@ import tianqi
 import weather
 
 
-def Start_calendar():
-    def print_sel():
-        text_time.configure(state="normal")
-        s_data = cal.selection_get().strftime('%Y%m%d')
-        text_time.delete(0, END)
-        text_time.insert("0", s_data)
-        text_time.configure(state="disabled")
-        top.destroy()
-
-    top = Toplevel()
-    top.geometry("300x250")
-
-    today = datetime.date.today()
-
-    mindate = datetime.date(year=2011, month=1, day=1)
-    maxdate = today + datetime.timedelta(days=14)
-
-    cal = Calendar(top, font="Arial 14", selectmode='day', locale='zh_CN', mindate=mindate, maxdate=maxdate,
-                   background="white", foreground="black", bordercolor="white", selectbackground="gray",
-                   selectforeground="white", showweeknumbers=False, disabledselectbackground=False)
-    cal.place(x=0, y=0, width=300, height=200)
-
-    btn1 = Button(top)
-    btn1["text"] = "确定"
-    btn1["command"] = print_sel
-    btn1.place(x=240, y=205)
-
+# def Start_calendar():
+#     def print_sel():
+#         text_time.configure(state="normal")
+#         s_data = cal.selection_get().strftime('%Y%m%d')
+#         text_time.delete(0, END)
+#         text_time.insert("0", s_data)
+#         text_time.configure(state="disabled")
+#         top.destroy()
+#
+#     top = Toplevel()
+#     top.geometry("300x250")
+#
+#     today = datetime.date.today()
+#
+#     mindate = datetime.date(year=2011, month=1, day=1)
+#     maxdate = today + datetime.timedelta(days=14)
+#
+#     cal = Calendar(top, font="Arial 14", selectmode='day', locale='zh_CN', mindate=mindate, maxdate=maxdate,
+#                    background="white", foreground="black", bordercolor="white", selectbackground="gray",
+#                    selectforeground="white", showweeknumbers=False, disabledselectbackground=False)
+#     cal.place(x=0, y=0, width=300, height=200)
+#
+#     btn1 = Button(top)
+#     btn1["text"] = "确定"
+#     btn1["command"] = print_sel
+#     btn1.place(x=240, y=205)
 
 def Future():
     weather.write_csv()  # 将未来24H天气数据写入csv文件
@@ -50,7 +49,6 @@ def Past():
 
 # 显示PNG图片
 def show_image(path, path1, path2):
-    global label_img, label_img1, label_img2
     img_open = Image.open(path)
     img_png = ImageTk.PhotoImage(img_open)
     label_img = tkinter.Label(root, image=img_png)
@@ -67,14 +65,10 @@ def show_image(path, path1, path2):
 
 
 def show_img(path):
-    global label_img3
-    label_img.destroy()
-    label_img1.destroy()
-    label_img2.destroy()
     img_open = Image.open(path)
     img_png = ImageTk.PhotoImage(img_open)
     label_img3 = tkinter.Label(root, image=img_png)
-    label_img.place(x=10, y=300, width=640, height=480)
+    label_img3.place(x=10, y=300, width=640, height=480)
     root.mainloop()
 
 
@@ -87,10 +81,10 @@ root_height_y = (root.winfo_screenheight() - root_height) / 2
 print(root_width)
 root.geometry("%dx%d+%d+%d" % (root_width, root_height, root_width_x, root_height_y))
 
-btn_time = Button(width=10, text="请输入时间", command=Start_calendar)
-btn_time.place(x=10, y=10)
-text_time = Entry(width=20)
-text_time.place(x=100, y=10)
+# btn_time = Button(width=10, text="请输入时间", command=Start_calendar)
+# btn_time.place(x=10, y=10)
+# text_time = Entry(width=20)
+# text_time.place(x=100, y=10)
 
 label_city = Label(width=10, text="请输入城市")
 label_city.place(x=10, y=60)
