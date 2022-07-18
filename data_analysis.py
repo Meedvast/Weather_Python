@@ -33,6 +33,7 @@ def tem_curve_day(data):
     plt.savefig('./png/tem_24h.png')
     plt.show()
 
+
 def rain_curve(data):
     """降雨概率柱状图"""
     date = list(data['时间'])
@@ -87,5 +88,3 @@ def analysis():
     tem_curve_day(data)
     rain_curve(data)
     hum_curve(data)
-
-

@@ -1,7 +1,7 @@
 import requests
 import re
 import csv
-import gui
+import glo
 
 KEY = '&key=d53ea69f45304dd1bdd632ba6c39294c'
 url_api = 'https://devapi.qweather.com/v7/weather/'
@@ -30,7 +30,7 @@ def hourly(city_id):
 
 def write_csv():
     print('请输入你想查询的城市:')
-    city_kw = gui.text_city.get()
+    city_kw = glo.text1
     city_id = lookup_city(city_kw)
     hourly_data = hourly(city_id)
     with open('weather.csv', 'w', encoding='gbk', newline='') as csv_file:

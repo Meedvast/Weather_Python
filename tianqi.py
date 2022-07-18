@@ -2,7 +2,6 @@ from xpinyin import Pinyin
 import requests
 import re
 import csv
-import gui
 
 
 def write_csv():
